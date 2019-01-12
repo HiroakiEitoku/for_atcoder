@@ -6,20 +6,15 @@ using namespace std;
 #define dump(x)  cout << #x << " = " << (x) << endl;
 #define rep(i, n) for(int i = 0; i < (int)(n); i++)
 #define fill(x, y) memset(x,y,sizeof(x))
+int dx[4] = {1, 0, -1, 0};
+int dy[4] = {0, 1, 0, -1};
+const int INF = 999999999;
 
-void readFromInputfile() {
-    ifstream in("/Users/hoo/CLionProjects/for_atcoder/input");
-    cin.rdbuf(in.rdbuf());
-}
-
-void readFromString() {
-    string input = R"#(
-            "Hello, World(1)"
-)#";
-
-    stringstream ss;
-    ss << input;
-    cin.rdbuf(ss.rdbuf());
+void readFromInputFile() {
+#ifdef LOCAL
+    static std::ifstream in("/Users/hoo/CLionProjects/for_atcoder/input");
+    std::cin.rdbuf(in.rdbuf());
+#endif
 }
 
 int main() {
