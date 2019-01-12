@@ -21,7 +21,45 @@ void readFromInputFile() {
 #endif
 }
 
+int N, W;
+
+int dp(int index, int weight, int m[101][10001], vector<int> v, vector<int> w) {
+
+    if (m[index][weight] != -1) {
+        return m[index][weight];
+    }
+
+    int res;
+
+    if (index >= N) {
+        res = 0;
+    } else if (weight < w[index]) {
+        res = dp(index + 1, weight, m, v, w);
+    } else {
+        res = max(
+            dp(index + 1, weight, m, v, w),
+            dp(index + 1, weight - w[index], m, v, w) + v[index]);
+        m[index][weight] = res;
+    }
+
+    return res;
+}
+
 int main() {
+    readFromInputFile();
+    int m[101][10001] = {};
+    fill(m, -1);
+    cin >> N >> W;
+    vector<int> v, w;
+    rep(i, N) {
+        int tv, tw;
+        cin >> tv >> tw;
+        v.push_back(tv);
+        w.push_back(tw);
+    }
+
+    cout << dp(0, W, m, v, w) << endl;
+
 
     return 0;
 }

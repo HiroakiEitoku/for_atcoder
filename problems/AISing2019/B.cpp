@@ -38,7 +38,7 @@ int main() {
         }
     }
 
-    cout << min(x, y, z) << endl;
+    cout << min(min(x, y), z) << endl;
 
     return 0;
 }
